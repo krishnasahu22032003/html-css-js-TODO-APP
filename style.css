@@ -1,0 +1,202 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0e0e11, #1f1f27);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 60px;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Container with glassmorphism effect */
+.todo-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 520px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 1s ease-out;
+  position: relative;
+}
+
+.todo-container::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  left: -150px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at center, #7928ca, transparent 70%);
+  opacity: 0.3;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  background: linear-gradient(to right, #61dafb, #c084fc);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+/* Input area */
+.input-group {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 0 5px rgba(255,255,255,0.05);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+button {
+  padding: 0.75rem 1.2rem;
+  background: linear-gradient(to right, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 4px 15px rgba(138, 92, 246, 0.3);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #7c3aed, #6366f1);
+}
+
+.error {
+  color: #f87171;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Task List */
+#taskList {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.3s ease, transform 0.2s ease;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.task-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #7c3aed;
+  cursor: pointer;
+}
+
+.task-text {
+  font-size: 1rem;
+  color: #e2e8f0;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #888;
+  opacity: 0.7;
+}
+
+/* Delete Button */
+.delete-btn {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: #f87171;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 8px #6366f1, 0 0 14px #8b5cf6;
+  }
+  to {
+    text-shadow: 0 0 16px #6366f1, 0 0 25px #8b5cf6;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
